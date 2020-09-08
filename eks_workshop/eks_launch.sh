@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -pr "Please enter your AWS IAM role (eg. workshop-name): " role
+read -rp "Please enter your AWS IAM role (eg. workshop-admin-name): " role
 
 echo "INSTALL KUBERNETES TOOLS"
 #https://www.eksworkshop.com/020_prerequisites/k8stools/
@@ -37,6 +37,20 @@ then
     echo "exiting"
     exit 1 || return 1
 fi
+echo
+echo "CREATE AN IAM ROLE FOR YOUR WORKSPACE"
+#https://www.eksworkshop.com/020_prerequisites/iamrole/
+echo "1. Follow this link to create an IAM role with Administrator access.: https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess
+2. Confirm that AWS service and EC2 are selected, then click Next to view permissions.
+3. Confirm that AdministratorAccess is checked, then click Next: Tags to assign tags.
+4. Take the defaults, and click Next: Review to review.
+5. Enter $role for the Name, and click Create role."
+echo 
+echo "ATTACH THE IAM ROLE TO YOUR WORKSPACE"
+#https://www.eksworkshop.com/020_prerequisites/ec2instance/
+echo "1. Follow this link to find your Cloud9 EC2 instance: https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*workshop.*;sort=desc:launchTime
+2. Select the instance, then choose Actions / Instance Settings / Attach/Replace IAM Role
+3. Choose $role from the IAM Role drop down, and select Apply"
 
 echo "UPDATE IAM SETTINGS FOR YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/workspaceiam/
