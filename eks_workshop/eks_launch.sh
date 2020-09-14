@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -rp "Please enter your AWS IAM role (eg. workshop-admin-name): " role
+read -rp "Please enter your AWS IAM role (eg. workshop-name): " role
 
 echo "INSTALL KUBERNETES TOOLS"
 #https://www.eksworkshop.com/020_prerequisites/k8stools/
@@ -29,14 +29,6 @@ kubectl completion bash >>  ~/.bash_completion
 
 echo 'export ALB_INGRESS_VERSION="v1.1.8"' >>  ~/.bash_profile
 .  ~/.bash_profile
-
-read -rp "Have you attached your IAM role ($role) to your workspace? Y/N: " -n 1
-echo
-if [[! $REPLY =~ ^[yes|y|YES|Yes|Y]$]] 
-then
-    echo "exiting"
-    exit 1 || return 1
-fi
 echo
 echo "CREATE AN IAM ROLE FOR YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/iamrole/
@@ -51,7 +43,13 @@ echo "ATTACH THE IAM ROLE TO YOUR WORKSPACE"
 echo "1. Follow this link to find your Cloud9 EC2 instance: https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*workshop.*;sort=desc:launchTime
 2. Select the instance, then choose Actions / Instance Settings / Attach/Replace IAM Role
 3. Choose $role from the IAM Role drop down, and select Apply"
-
+read -rp "Have you attached your IAM role ($role) to your workspace? Y/N: " -n 1
+echo
+if [[! $REPLY =~ ^[yes|y|YES|Yes|Y]$]] 
+then
+    echo "exiting"
+    exit 1 || return 1
+fi
 echo "UPDATE IAM SETTINGS FOR YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/workspaceiam/
 
@@ -94,16 +92,16 @@ aws kms create-alias --alias-name alias/eksworkshop --target-key-id $(aws kms cr
 export MASTER_ARN=$(aws kms describe-key --key-id alias/eksworkshop --query KeyMetadata.Arn --output text)
 echo "export MASTER_ARN=${MASTER_ARN}" | tee -a ~/.bash_profile
 
-#echo "PREREQUISITES"
+echo "PREREQUISITES"
 #https://www.eksworkshop.com/030_eksctl/prerequisites/
 
-#curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 
-#sudo mv -v /tmp/eksctl /usr/local/bin
+sudo mv -v /tmp/eksctl /usr/local/bin
 
-#eksctl version
-#sleep 10s
+eksctl version
+sleep 10s
 
-#eksctl completion bash >> ~/.bash_completion
-#. /etc/profile.d/bash_completion.sh
-#. ~/.bash_completion
+eksctl completion bash >> ~/.bash_completion
+. /etc/profile.d/bash_completion.sh
+. ~/.bash_completion
