@@ -8,7 +8,7 @@ echo "INSTALL KUBERNETES TOOLS"
 #https://www.eksworkshop.com/020_prerequisites/k8stools/
 
 sudo curl --silent --location -o /usr/local/bin/kubectl \
-	https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.7/2020-07-08/bin/linux/amd64/kubectl
+  https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.7/2020-07-08/bin/linux/amd64/kubectl
 
 sudo chmod +x /usr/local/bin/kubectl
 
@@ -21,7 +21,7 @@ echo 'yq() {
 }' | tee -a ~/.bashrc && source ~/.bashrc
 
 for command in kubectl jq envsubst aws; do
-	which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
+  which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
 done
 
 kubectl completion bash >>~/.bash_completion
@@ -47,8 +47,8 @@ echo "1. Follow this link to find your Cloud9 EC2 instance: https://console.aws.
 read -rp "Have you attached your IAM role ($role) to your workspace? Y/N: " -n 1
 echo
 if [[ ! $REPLY =~ ^[yes|y|YES|Yes|Y]$ ]]; then
-	echo "exiting"
-	exit 1 || return 1
+  echo "exiting"
+  exit 1 || return 1
 fi
 echo "UPDATE IAM SETTINGS FOR YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/workspaceiam/
