@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Version: 0.2
 read -rp "Please enter your AWS IAM role (eg. workshop-Name): " role
 
 echo "INSTALL KUBERNETES TOOLS"
@@ -79,18 +79,18 @@ git clone https://github.com/brentley/ecsdemo-crystal.git
 
 echo "CREATE AN SSH KEY"
 #https://www.eksworkshop.com/020_prerequisites/sshkey/
-read -rp "Please enter your eksworkshop instance (eg. eksworshop_name" eksworshop_name
+read -rp "Please enter your eksworkshop instance (eg. eksworshop-name" eksworshop_name
 echo "press enter 3 times"
 ssh-keygen
 
-aws ec2 import-key-pair --key-name "$eksworshop_name" --public-key-material file://~/.ssh/id_rsa.pub
-aws ec2 import-key-pair --key-name "$eksworshop_name" --public-key-material fileb://~/.ssh/id_rsa.pub
+aws ec2 import-key-pair --key-name "$eksworshop-name" --public-key-material file://~/.ssh/id_rsa.pub
+aws ec2 import-key-pair --key-name "$eksworshop-name" --public-key-material fileb://~/.ssh/id_rsa.pub
 
 echo "CREATE AN AWS KMS CUSTOM MANAGED KEY (CMK)"
 #https://www.eksworkshop.com/020_prerequisites/kmskey/
 
-aws kms create-alias --alias-name alias/$eksworshop_name --target-key-id $(aws kms create-key --query KeyMetadata.Arn --output text)
-export MASTER_ARN=$(aws kms describe-key --key-id alias/$eksworshop_name --query KeyMetadata.Arn --output text)
+aws kms create-alias --alias-name alias/$eksworshop-name --target-key-id $(aws kms create-key --query KeyMetadata.Arn --output text)
+export MASTER_ARN=$(aws kms describe-key --key-id alias/$eksworshop-name --query KeyMetadata.Arn --output text)
 echo "export MASTER_ARN=${MASTER_ARN}" | tee -a ~/.bash_profile
 
 echo "EKS Launch PREREQUISITES"

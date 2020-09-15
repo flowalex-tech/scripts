@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Version 0.1
 # copied from https://unix.stackexchange.com/a/456889
 
     read -rp "Please enter your openvpn username: " OPENVPN_USERNAME
