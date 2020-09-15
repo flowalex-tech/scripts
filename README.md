@@ -2,7 +2,8 @@ Simple scripts  that I have written, each directory will have a readme explainin
 
 [![GPLv3 License](https://img.shields.io/github/license/flowalex-tech/scripts?style=flat-square)](https://opensource.org/licenses/)
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/flowalex-tech/scripts?style=flat-square)]()
+
+[![pipeline status](https://gitlab.com/flowalex/scripts/badges/master/pipeline.svg)](https://gitlab.com/flowalex/scripts/-/commits/master)
 
 # IMPORTANT:
 
