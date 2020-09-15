@@ -1,4 +1,5 @@
 #!bin/bash -x
+# Version 0.1
 echo "WARNING only run this script in the directory that you want the git repo in.  This script will clone the reposity in the directory it is running in."
 while `test $ans='y'`
 do

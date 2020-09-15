@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Version: 0.2
 echo "UNDEPLOY THE APPLICATIONS"
 #https://www.eksworkshop.com/920_cleanup/undeploy/
 
