@@ -14,6 +14,6 @@ shfmt:
   before_script:
     - shfmt -version
   script:
-    - shfmt -i 2 -ci -d ./*/*.sh  # path to your shell scripts
+    - shfmt -i 2 -ci -w ./*/*.sh  # path to your shell scripts
   only:
     - merge_requests
