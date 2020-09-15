@@ -1,12 +1,14 @@
 #!/bin/bash
-# Version: 0.2
+# Version: 0.3
+# shellcheck disable=SC2016,SC1090,SC1091,SC2155,SC2086,SC2154,SC2230,SC2046
+
 read -rp "Please enter your AWS IAM role (eg. workshop-Name): " role
 
 echo "INSTALL KUBERNETES TOOLS"
 #https://www.eksworkshop.com/020_prerequisites/k8stools/
 
 sudo curl --silent --location -o /usr/local/bin/kubectl \
-  https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.7/2020-07-08/bin/linux/amd64/kubectl
+	https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.7/2020-07-08/bin/linux/amd64/kubectl
 
 sudo chmod +x /usr/local/bin/kubectl
 
@@ -18,17 +20,16 @@ echo 'yq() {
   docker run --rm -i -v "${PWD}":/workdir mikefarah/yq yq "$@"
 }' | tee -a ~/.bashrc && source ~/.bashrc
 
-for command in kubectl jq envsubst aws
-  do
-    which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
-  done
+for command in kubectl jq envsubst aws; do
+	which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
+done
 
-kubectl completion bash >>  ~/.bash_completion
+kubectl completion bash >>~/.bash_completion
 . /etc/profile.d/bash_completion.sh
 . ~/.bash_completion
 
-echo 'export ALB_INGRESS_VERSION="v1.1.8"' >>  ~/.bash_profile
-.  ~/.bash_profile
+echo 'export ALB_INGRESS_VERSION="v1.1.8"' >>~/.bash_profile
+. ~/.bash_profile
 echo
 echo "CREATE AN IAM ROLE FOR YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/iamrole/
@@ -37,7 +38,7 @@ echo "1. Follow this link to create an IAM role with Administrator access.: http
 3. Confirm that AdministratorAccess is checked, then click Next: Tags to assign tags.
 4. Take the defaults, and click Next: Review to review.
 5. Enter $role for the Name, and click Create role."
-echo 
+echo
 echo "ATTACH THE IAM ROLE TO YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/ec2instance/
 echo "1. Follow this link to find your Cloud9 EC2 instance: https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*workshop.*;sort=desc:launchTime
@@ -45,10 +46,9 @@ echo "1. Follow this link to find your Cloud9 EC2 instance: https://console.aws.
 3. Choose $role from the IAM Role drop down, and select Apply"
 read -rp "Have you attached your IAM role ($role) to your workspace? Y/N: " -n 1
 echo
-if [[! $REPLY =~ ^[yes|y|YES|Yes|Y]$]] 
-then
-    echo "exiting"
-    exit 1 || return 1
+if [[ ! $REPLY =~ ^[yes|y|YES|Yes|Y]$ ]]; then
+	echo "exiting"
+	exit 1 || return 1
 fi
 echo "UPDATE IAM SETTINGS FOR YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/workspaceiam/
@@ -72,7 +72,7 @@ sleep 10s
 echo "CLONE THE SERVICE REPOS"
 #https://www.eksworkshop.com/020_prerequisites/clone/
 
-cd ~/environment
+cd ~/environment || exit 1
 git clone https://github.com/brentley/ecsdemo-frontend.git
 git clone https://github.com/brentley/ecsdemo-nodejs.git
 git clone https://github.com/brentley/ecsdemo-crystal.git
@@ -83,14 +83,14 @@ read -rp "Please enter your eksworkshop instance (eg. eksworshop-name" eksworsho
 echo "press enter 3 times"
 ssh-keygen
 
-aws ec2 import-key-pair --key-name "$eksworshop-name" --public-key-material file://~/.ssh/id_rsa.pub
-aws ec2 import-key-pair --key-name "$eksworshop-name" --public-key-material fileb://~/.ssh/id_rsa.pub
+aws ec2 import-key-pair --key-name "$eksworshop_name" --public-key-material file://~/.ssh/id_rsa.pub
+aws ec2 import-key-pair --key-name "$eksworshop_name" --public-key-material fileb://~/.ssh/id_rsa.pub
 
 echo "CREATE AN AWS KMS CUSTOM MANAGED KEY (CMK)"
 #https://www.eksworkshop.com/020_prerequisites/kmskey/
 
-aws kms create-alias --alias-name alias/$eksworshop-name --target-key-id $(aws kms create-key --query KeyMetadata.Arn --output text)
-export MASTER_ARN=$(aws kms describe-key --key-id alias/$eksworshop-name --query KeyMetadata.Arn --output text)
+aws kms create-alias --alias-name alias/$eksworshop_name --target-key-id $(aws kms create-key --query KeyMetadata.Arn --output text)
+export MASTER_ARN=$(aws kms describe-key --key-id alias/$eksworshop_name --query KeyMetadata.Arn --output text)
 echo "export MASTER_ARN=${MASTER_ARN}" | tee -a ~/.bash_profile
 
 echo "EKS Launch PREREQUISITES"
@@ -103,6 +103,6 @@ sudo mv -v /tmp/eksctl /usr/local/bin
 eksctl version
 sleep 10s
 
-eksctl completion bash >> ~/.bash_completion
+eksctl completion bash >>~/.bash_completion
 . /etc/profile.d/bash_completion.sh
 . ~/.bash_completion
