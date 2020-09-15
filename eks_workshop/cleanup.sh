@@ -1,17 +1,17 @@
 #!/bin/bash
-# Version: 0.2
+# Version: 0.3
 echo "UNDEPLOY THE APPLICATIONS"
 #https://www.eksworkshop.com/920_cleanup/undeploy/
 
-cd ~/environment/ecsdemo-frontend
+cd ~/environment/ecsdemo-frontend || exit 1
 kubectl delete -f kubernetes/service.yaml
 kubectl delete -f kubernetes/deployment.yaml
 
-cd ~/environment/ecsdemo-crystal
+cd ~/environment/ecsdemo-crystal || exit 2
 kubectl delete -f kubernetes/service.yaml
 kubectl delete -f kubernetes/deployment.yaml
 
-cd ~/environment/ecsdemo-nodejs
+cd ~/environment/ecsdemo-nodejs || exit 3
 kubectl delete -f kubernetes/service.yaml
 kubectl delete -f kubernetes/deployment.yaml
 

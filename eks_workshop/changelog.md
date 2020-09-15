@@ -18,3 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Moved IAM steps above prompt checking they are done
 *  Removed `-admin` from the role example
 *  Renamed the ssh key from `eksworkshop` to a variable `eksworkshop-<Name>`
+
+## 0.3
+### Changed
+ * Ran Shellcheck
+
+### Fixed
+ * Changed eksworkshop-name to eksworkshop_name
