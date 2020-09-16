@@ -16,11 +16,21 @@ This has two repositories, a github one and a gitlab one.  the gitlab one is whe
 
 ## Testing Status
 
-|Script   | Status  | Version Tested |
-|---|---|---|
-|  eks_workshop/cleanup.sh | [![Generic badge](https://img.shields.io/badge/Passed-No-red.svg)](https://shields.io/)  | [![Generic badge](https://img.shields.io/badge/version-0.3-blue.svg)](https://shields.io/) |
-|  eks_workshop/eks_launch.sh | [![Generic badge](https://img.shields.io/badge/Passed-No-red.svg)](https://shields.io/)  | [![Generic badge](https://img.shields.io/badge/version-0.3-blue.svg)](https://shields.io/) |
-| git_utils/git_repo_updater.sh |  [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/)  | [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) |
-| git_utils/gitRepoConfig.sh |  [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/)  | [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) |
-| network_utils/protonvpn_import.sh |  [![Generic badge](https://img.shields.io/badge/Passed-No-red.svg)](https://shields.io/)  | [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) |
-| os_utils/rpmdb_rebuild.sh |  [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/)  | [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) |
+* eks_workshop/cleanup.sh
+    *  [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/) 
+    * [![Generic badge](https://img.shields.io/badge/version-0.3-blue.svg)](https://shields.io/) 
+* eks_workshop/eks_launch.sh
+    * [![Generic badge](https://img.shields.io/badge/Passed-No-red.svg)](https://shields.io/)  
+    * [![Generic badge](https://img.shields.io/badge/version-0.3-blue.svg)](https://shields.io/) 
+* git_utils/git_repo_updater.sh
+    * [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/)  
+    * [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) 
+* git_utils/gitRepoConfig.sh
+    * [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/)
+    * [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) 
+*  network_utils/protonvpn_import.sh
+    *  [![Generic badge](https://img.shields.io/badge/Passed-No-red.svg)](https://shields.io/)
+    *  [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) 
+*  os_utils/rpmdb_rebuild.sh 
+    *  [![Generic badge](https://img.shields.io/badge/Passed-Yes-green.svg)](https://shields.io/) 
+    *  [![Generic badge](https://img.shields.io/badge/version-0.1-blue.svg)](https://shields.io/) 
