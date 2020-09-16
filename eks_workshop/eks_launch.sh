@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 0.3
+# Version: 0.4
 # shellcheck disable=SC2016,SC1090,SC1091,SC2155,SC2086,SC2154,SC2230,SC2046
 
 read -rp "Please enter your AWS IAM role (eg. workshop-Name): " role
