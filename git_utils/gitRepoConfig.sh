@@ -1,6 +1,6 @@
 #!/bin/bash -x
-# Version 0.1
-# shellcheck disable=SC2086
+# Version 0.2
+
 echo "WARNING only run this script in the directory that you want the git repo in.  This script will clone the reposity in the directory it is running in."
 while true; do
   echo "Menu"
@@ -18,20 +18,20 @@ while true; do
     1)
       echo "Please Enter your Repository: "
       read -r repo
-      echo $repo
-      git clone $repo
+      echo "$repo"
+      git clone "$repo"
       ;;
 
     2)
       read -rp "Please Enter your Repository: " repo
       read -rp "Please enter the directory of the reposity: " repodir
       read -rp "Please enter the upstream reposity: " uprepo
-      echo $repo
-      echo $repodir
-      echo $uprepo
-      git clone $repo
-      cd $repodir || exit 1
-      git remote add upstream $uprepo
+      echo "$repo"
+      echo "$repodir"
+      echo "$uprepo"
+      git clone "$repo"
+      cd "$repodir" || exit 1
+      git remote add upstream "$uprepo"
       git fetch upstream
       git checkout master
       git merge upstream/master
@@ -41,10 +41,10 @@ while true; do
     3)
       read -rp "Please enter the directory of the reposity: " repodir
       read -rp "Please enter the upstream reposity: " uprepo
-      echo $repodir
-      echo $uprepo
-      cd $repodir || exit 1
-      git remote add upstream $uprepo
+      echo "$repodir"
+      echo "$uprepo"
+      cd "$repodir" || exit 1
+      git remote add upstream "$uprepo"
       git fetch upstream
       git checkout master
       git merge upstream/master
@@ -53,8 +53,8 @@ while true; do
 
     4)
       read -rp "Please enter the directory of the reposity: " repodir
-      echo $repodir
-      cd $repodir || exit 1
+      echo "$repodir"
+      cd "$repodir" || exit 1
       git fetch upstream
       git checkout master
       git merge upstream/master

@@ -42,7 +42,7 @@ echo
 echo "ATTACH THE IAM ROLE TO YOUR WORKSPACE"
 #https://www.eksworkshop.com/020_prerequisites/ec2instance/
 echo "1. Follow this link to find your Cloud9 EC2 instance: https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*workshop.*;sort=desc:launchTime
-2. Select the instance, then choose Actions / Instance Settings / Attach/Replace IAM Role
+2. Select the instance, then choose Actions / Instance Settings / Modify IAM Role
 3. Choose $role from the IAM Role drop down, and select Apply"
 read -rp "Have you attached your IAM role ($role) to your workspace? Y/N: " -n 1
 echo
@@ -79,7 +79,7 @@ git clone https://github.com/brentley/ecsdemo-crystal.git
 
 echo "CREATE AN SSH KEY"
 #https://www.eksworkshop.com/020_prerequisites/sshkey/
-read -rp "Please enter your eksworkshop instance (eg. eksworshop-name" eksworshop_name
+read -rp "Please enter your eksworkshop instance (eg. eksworshop-name): " eksworshop_name
 echo "press enter 3 times"
 ssh-keygen
 
