@@ -1,5 +1,6 @@
 #!/bin/bash
 # Version: 0.4
+read -rp "What is the name of your eks cluster (check eksworkshop.yaml it will be eksworkshop-name): " clustername
 echo "UNDEPLOY THE APPLICATIONS"
 #https://www.eksworkshop.com/920_cleanup/undeploy/
 
@@ -21,7 +22,7 @@ kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHB
 
 echo "DELETE THE EKSCTL CLUSTER"
 #https://www.eksworkshop.com/920_cleanup/eksctl/
-eksctl delete cluster --name=eksworkshop-eksctl
+eksctl delete cluster --name="$clustername"
 
 echo "CLEANUP THE WORKSPACE"
 echo "Since we no longer need the Cloud9 instance to have Administrator access to our account, we can delete the workspace we created:
