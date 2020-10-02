@@ -25,3 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
  * Changed eksworkshop-name to eksworkshop_name
+
+ ## 0.4
+ ### Changed
+ * Added extra cleanup script
+ 
+ ### Added 
+ * Created zip of eks_workshop to have a single download instead of 2

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 0.3
+# Version: 0.4
 echo "UNDEPLOY THE APPLICATIONS"
 #https://www.eksworkshop.com/920_cleanup/undeploy/
 
@@ -26,4 +26,5 @@ eksctl delete cluster --name=eksworkshop-eksctl
 echo "CLEANUP THE WORKSPACE"
 echo "Since we no longer need the Cloud9 instance to have Administrator access to our account, we can delete the workspace we created:
 1. Go to your Cloud9 Environment (https://us-west-2.console.aws.amazon.com/cloud9/home)
-2. Select the environment named eksworkshop and pick delete"
+2. Select the environment named eksworkshop and pick delete
+3. Clean up your keys, go to https://us-west-2.console.aws.amazon.com/kms/home?region=us-west-2#/kms/keys and delete any keys related to your IAM accont"

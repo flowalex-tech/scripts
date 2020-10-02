@@ -1,6 +1,4 @@
 #!/bin/bash -x
-# Version 0.2
-
 echo "WARNING only run this script in the directory that you want the git repo in.  This script will clone the reposity in the directory it is running in."
 while true; do
   echo "Menu"
@@ -14,7 +12,6 @@ while true; do
 
   read -r choice
   case $choice in
-
     1)
       echo "Please Enter your Repository: "
       read -r repo
@@ -41,10 +38,6 @@ while true; do
     3)
       read -rp "Please enter the directory of the reposity: " repodir
       read -rp "Please enter the upstream reposity: " uprepo
-      echo "$repodir"
-      echo "$uprepo"
-      cd "$repodir" || exit 1
-      git remote add upstream "$uprepo"
       git fetch upstream
       git checkout master
       git merge upstream/master
