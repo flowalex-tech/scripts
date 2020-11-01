@@ -9,7 +9,7 @@ shell check:
     - merge_requests
 
 shfmt:
-  image: mvdan/shfmt:v3.1.2-alpine
+  image: mvdan/shfmt:v3.2.0-alpine
   stage: test
   before_script:
     - shfmt -version
