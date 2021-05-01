@@ -1,5 +1,6 @@
 #!/bin/bash
 # Version: 0.4
+# This is no longer being maintained PRs are still welcome, but I am no longer making updates to the
 read -rp "What is the name of your eks cluster (check eksworkshop.yaml it will be eksworkshop-name): " clustername
 echo "UNDEPLOY THE APPLICATIONS"
 #https://www.eksworkshop.com/920_cleanup/undeploy/
